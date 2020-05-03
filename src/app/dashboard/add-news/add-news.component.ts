@@ -19,11 +19,11 @@ export class AddNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.newsForm = this.formBuilder.group({
-      headline: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(50)]],
-      source: ['anonymous', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
+      headline: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(100)]],
+      source: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
       summary: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(200)]],
-      content: ['', [Validators.required, Validators.minLength(100)]],
-    });
+      content: ['', [Validators.minLength(200)]],
+  });
   }
 
   save(addNews: INewsDetails) {
