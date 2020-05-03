@@ -1,0 +1,94 @@
+mat-card-content {
+    margin: 10px;
+    border: thick;
+    color: black;
+}
+
+.deltaConfirmed {
+    font-size: small;
+    color: rgb(44, 196, 44);
+}
+
+.td {
+    font-size: medium;
+    text-align: right;
+}
+
+.deltaDeceased {
+    font-size: small;
+    color: red;
+}
+
+.deltaRecovered {
+    font-size: small;
+    color: blue;
+}
+
+table {
+    width: 50%;
+}
+
+.td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tr.example-detail-row {
+    height: 0;
+}
+
+tr.example-stateData-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-stateData-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.example-stateData-row td {
+    border-bottom-width: 0;
+}
+
+.example-stateData-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+td.mat-cell:first-child {
+    border-bottom-style: none;
+    text-align: left;
+}
+
+td.mat-cell {
+    border-bottom-style: none;
+    text-align: center;
+}
+
+th.mat-header-cell {
+    border-bottom-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.example-stateData-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+}
+
+.example-stateData-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.example-stateData-description {
+    padding: 16px;
+}
+
+.example-stateData-description-attribution {
+    opacity: 0.5;
+}

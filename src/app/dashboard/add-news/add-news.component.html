@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form novalidate (ngSubmit)="save(newsForm.value)" [formGroup]="newsForm">
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label" for="txtHeadline">
+            Add Headline
+          </label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="txtHeadline" type="text" placeholder="Add News Headline" formControlName="headline" [ngClass]="{
+              'is-invalid':
+                (newsForm.get('headline').touched || newsForm.get('headline').dirty) &&
+                !newsForm.get('headline').valid
+            }" />
+                        <span class="invalid-feedback">
+              <span *ngIf="newsForm.get('headline').errors?.required">
+                Please enter headline
+              </span>
+                        <span *ngIf="newsForm.get('headline').errors?.minlength">
+                Headline must be longer than 20 characters.
+              </span>
+                        <span *ngIf="newsForm.get('headline').errors?.maxlength">
+                Headline should not be longer than 50 characters.
+              </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label" for="txtSource">
+            Add Source
+          </label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="txtSource" type="text" placeholder="Add source of the news" formControlName="source" [ngClass]="{
+              'is-invalid':
+                (newsForm.get('source').touched || newsForm.get('source').dirty) &&
+                !newsForm.get('source').valid
+            }" />
+                        <span class="invalid-feedback">
+              <span *ngIf="newsForm.get('source').errors?.required">
+                Please enter source
+              </span>
+                        <span *ngIf="newsForm.get('source').errors?.minlength">
+                source must be longer than 4 characters.
+              </span>
+                        <span *ngIf="newsForm.get('source').errors?.maxlength">
+                Source should not be longer than 25 characters.
+              </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label" for="txtSummary">
+            Add Summary
+          </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" id="txtSummary" type="text" placeholder="Add News summary" formControlName="summary" [ngClass]="{
+              'is-invalid':
+                (newsForm.get('summary').touched || newsForm.get('summary').dirty) &&
+                !newsForm.get('summary').valid
+            }"></textarea>
+                        <span class="invalid-feedback">
+              <span *ngIf="newsForm.get('summary').errors?.required">
+                Please enter summary for the news
+              </span>
+                        <span *ngIf="newsForm.get('summary').errors?.minlength">
+                Summary must be longer than 100 characters.
+              </span>
+                        <span *ngIf="newsForm.get('summary').errors?.maxlength">
+                Summary should not be longer than 200 characters.
+              </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label" for="txtContet">
+            Add Content
+          </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" id="txtContent" type="text" placeholder="Add News Full Content" rows="8" formControlName="content" [ngClass]="{
+            'is-invalid':
+              (newsForm.get('content').touched || newsForm.get('content').dirty) &&
+              !newsForm.get('content').valid
+          }"></textarea>
+                        <span class="invalid-feedback">
+              <span *ngIf="newsForm.get('content').errors?.required">
+                Please enter content for the news
+              </span>
+                        <span *ngIf="newsForm.get('content').errors?.minlength">
+                Content must be longer than 100 characters.
+              </span>
+                        </span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row mb-2">
+                    <div class="offset-md-2 col-md-4">
+                        <button mat-flat-button color="accent" type="submit" style="width:80px" [title]="
+              newsForm.valid
+                ? 'Save your entered data'
+                : 'Disabled until the form data is valid'
+            " [disabled]="!newsForm.valid">
+              Save
+            </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <br><br><br> -->

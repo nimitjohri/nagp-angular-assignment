@@ -1,0 +1,16 @@
+.precautionsImages {
+    size: 100rem;
+}
+
+.carousel-inner>.carousel-item>img,
+.carousel-inner>.carousel-item>a>img {
+    display: block;
+    width: 100%; // Add this
+    height: 250px;
+    align-items: center;
+}
+
+.list-group>.list-group-item {
+    color: cornflowerblue;
+    text-decoration: solid;
+}

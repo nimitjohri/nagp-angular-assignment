@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="container page">
+        <div class="row">
+            <div *ngFor="let news of newsArr">
+                <div class="card" width="100%">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p class="alignleft">
+                                {{news.headline}}
+                            </p>
+                            <p class="alignright">
+                                @{{news.source}}
+                            </p>
+                        </div>
+                        <div class="card-text" style="clear: both;">
+                            <p>{{news.summary}}</p>
+                        </div>
+                        <div class="card-footer" *ngIf="news.content != ''">
+                            <div class="btn-toolbar" role="toolbar" aria-label="Basic example">
+                                <span *ngIf="isLoggedIn">
+                                <a [routerLink]="['editnews']" [queryParams]="{id:news.id}" class=" btn btn-info" (click)="editNews(news.id)"><i class="fa fa-edit"></i> Edit News</a>
+                              </span>
+                                <span *ngIf="isLoggedIn">
+                                <button type="submit" class="btn btn-danger" (click)="deleteNews(news.id)"> Delete </button>
+                              </span>
+                            </div>
+                            <a style="float: right; font-size: 15px;" class='readmore' data-toggle="modal" data-target="#myModal" (click)="showModal(news)">Read More... </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="currentNews">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                {{currentNews.headline}}
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                {{currentNews.content}}
+                <div class="modal-footer">
+                    <button type="button" style="float:right; font-size: 10px;" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

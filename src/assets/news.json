@@ -1,0 +1,15 @@
+[{
+        "id": "1",
+        "headline": "headline 1",
+        "source": "News 24",
+        "summary": "summary 1",
+        "content": "conten 1"
+    },
+    {
+        "id": "2",
+        "headline": "headline 2",
+        "source": "News 24",
+        "summary": "summary 2",
+        "content": "conten 2"
+    }
+]

@@ -1,0 +1,17 @@
+mat-toolbar {
+    text-align: center;
+    color: #3f51b5;
+    background-color: ghostwhite;
+    border-bottom: 2px double #3f51b5;
+    margin-bottom: 1em;
+}
+
+.mat-toolbar>.mat-toolbar-row>button {
+    padding-left: 100px;
+}
+
+.btn {
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+}

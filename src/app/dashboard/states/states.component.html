@@ -1,0 +1,92 @@
+<div class="container" *ngIf="countryData">
+    <div class="row">
+        <div class="col">
+            <div class="card  text-white bg-danger o-hidden h-100 ">
+                <div class="card-header">
+                    TOTAL CASES
+                </div>
+                <div class="card-body" style="font-size: 15pt;
+  font-weight: 600;
+  text-align: center;">
+                    <span class="deltaConfirmed" *ngIf="countryData"><span class="fas fa-arrow-up"></span>{{countryData.deltaconfirmed}}</span><br> {{countryData.confirmed}}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card  text-white bg-primary o-hidden h-100 ">
+                <div class="card-header">
+                    ACTIVE
+                </div>
+                <div class="card-body" style="font-size: 15pt;
+font-weight: 600;
+text-align: center;">
+                    <span></span><br> {{countryData.active}}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-header">
+                    RECOVERED
+                </div>
+                <div class="card-body" style="font-size: 15pt;
+                                        font-weight: 600;
+                                        text-align: center;">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <span class="deltaRecoverd" *ngIf="countryData"><span class="fas fa-arrow-up"></span>{{countryData.deltarecovered}}</span><br> {{countryData.recovered}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-secondary o-hidden h-100">
+                <div class="card-header">
+                    DEATHS
+                </div>
+                <div class="card-body" style="font-size: 15pt;
+  font-weight: 600;
+  text-align: center;">
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="deltaDeceased" *ngIf="countryData"><span class="fas fa-arrow-up"></span>{{countryData.deltadeaths}}</span><br> {{countryData.deaths}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <table mat-table [dataSource]="statesData" multiTemplateDataRows class="mat-elevation-z8">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+            <th mat-header-cell *matHeaderCellDef> {{column | uppercase }} </th>
+            <td mat-cell *matCellDef="let stateData"> <span *ngIf='column === "state" && !(expandedstateData === stateData)' class="fas fa-arrow-right"></span>
+                <span *ngIf='column === "state" && (expandedstateData === stateData)' class="fas fa-arrow-down">
+            </span>
+
+                <span *ngIf='column === "confirmed" && stateData.deltaconfirmed !=0' class="deltaConfirmed"><span class="fas fa-arrow-up"></span> {{stateData.deltaconfirmed}}</span>
+                <span *ngIf='column === "deaths" && stateData.deltadeaths != 0' class="deltaDeceased"><span class="fas fa-arrow-up"></span>{{stateData.deltadeaths}}</span>
+                <span *ngIf='column === "recovered" && stateData.deltarecovered != 0' class="deltaRecovered"><span class="fas fa-arrow-up"></span>{{stateData.deltarecovered}}</span> {{stateData[column]}} </td>
+        </ng-container>
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let stateData" [attr.colspan]="columnsToDisplay.length">
+                <div class="example-stateData-detail" [@detailExpand]="stateData == expandedstateData ? 'expanded' : 'collapsed'">
+                    <div>
+                        <app-districts [stateName]='stateData.state'></app-districts>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let stateData; columns: columnsToDisplay;" class="example-stateData-row" [class.example-expanded-row]="expandedstateData === stateData" (click)="expandedstateData = expandedstateData === stateData ? null : stateData">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+</div>
